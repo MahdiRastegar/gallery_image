@@ -1,0 +1,42 @@
+
+<div class="card text-center">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <div *ngIf="Searched!=''">
+      <header class="text-center">
+          <h2>Search On {{Searched}}</h2>
+      </header>
+    </div>
+    <div id="qwe" class="tz-gallery container gallery-container">
+
+        <div class="row">
+            <div id="container1"></div>    
+            <section>
+                <image-item *ngFor="let image of images"
+                    [mediaItemToWatch]="image"
+                    (deleted)="onMediaItemDeleted($event)"
+                    (edited)="onMediaItemEdited($event)"
+                    class="col-sm-6 col-md-4" >
+                </image-item>    
+            </section>
+        </div>
+    </div>
+    
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li id="Previous" class="page-item disabled">
+        <button class="page-link" tabindex="-1" (click)="Previous()">Previous</button>
+      </li>
+      <li id="a" class="page-item"><button (click)="SetCurrent('a')" class="page-link" >{{a}}</button></li>
+      <li id="b" class="page-item disabled"><button (click)="SetCurrent('b')" class="page-link" >{{b}}</button></li>
+      <li id="c" class="page-item disabled"><button (click)="SetCurrent('c')" class="page-link" >{{c}}</button></li>
+      <li id="Next" class="page-item disabled">
+        <button class="page-link" (click)="Next()">Next</button>
+      </li>
+    </ul>
+  </nav>
+</div>
+

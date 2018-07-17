@@ -1,0 +1,53 @@
+<div class="card">
+    <div class="card-header text-center">
+      Featured
+    </div>
+    <div class="card-body">
+        <header class="text-center">
+            <h2>Add Image to Watch</h2>
+        </header>
+        
+        <form #imageForm="ngForm" (ngSubmit)="OnSubmit(imageForm,title,Description,image)">             
+            <div class="row form-group">
+                <div class="col-sm-6 col-md-4">
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control" type="text" id="title"                
+                        #title [(ngModel)]="model.title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" type="text" id="Description"
+                        #Description [(ngModel)]="model.description" name="Description"></textarea>       
+                    </div>
+                </div>    
+            </div>
+            <div class="text-center">
+                <div class="form-group">
+                    <div *ngIf="model==false; then thenBlock else elseBlock"></div>
+                    <ng-template #thenBlock>
+                    <img src={{imageUrl}} style="width: 250px;height: 250px">                        
+                    </ng-template>
+                    <ng-template #elseBlock>
+                    <img src={{ty()}}{{model.name}} style="width: 250px;height: 250px">                        
+                    </ng-template>                    
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-6 col-md-4">
+                    </div>
+                    <div *ngIf="model==false;">
+                        <div class="col-sm-6 col-md-4">
+                            <input type="file" class="form-control-file" #image accept="image/*" (change)="handleFileInput($event.target.files)">
+                        </div>    
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="!imageForm.valid||!image_seted">
+                    <div *ngIf="model==false; else elseBlock2">Submit</div>                    
+                    <ng-template #elseBlock2>Update</ng-template>
+                </button>
+            </div>
+        </form>
+    
+  </div>

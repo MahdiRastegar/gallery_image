@@ -1,0 +1,19 @@
+
+    <div class="thumbnail">
+        <a class="lightbox" href={{ty()}}{{image.Name}}>
+            <img class="img-fluid" src={{ty()}}{{image.Name}}>
+        </a>
+        <div class="caption">
+            <h3>{{image.Title}}</h3>
+            <p>{{image.Description}}</p>
+        </div>
+        
+        <button class="btn btn-outline-secondary" (click)="onEdit()">
+            Edit
+        </button> &nbsp;
+        <button class="btn btn-dark" (click)="onDelete()">
+            Delete
+        </button>
+    </div>
+
+    
